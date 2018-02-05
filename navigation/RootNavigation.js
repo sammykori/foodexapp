@@ -4,12 +4,16 @@ import { StackNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
+import OrderScreen from '../screens/OrderScreen';
 
 const RootStackNavigator = StackNavigator(
   {
     Main: {
       screen: MainTabNavigator,
     },
+    Order: {
+      screen: OrderScreen
+    }
   },
   {
     navigationOptions: () => ({
