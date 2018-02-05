@@ -34,7 +34,7 @@ export default TabNavigator(
                 : 'md-search';
             break;
           case 'Favorites':
-            iconName = Platform.OS === 'ios' ? `ios-star${focused ? '' : '-outline'}` : 'md-star';
+            iconName = Platform.OS === 'ios' ? `ios-heart${focused ? '' : '-outline'}` : 'md-heart';
             break;
           // case 'Settings':
           //   iconName =
@@ -45,7 +45,7 @@ export default TabNavigator(
             name={iconName}
             size={28}
             style={{ marginBottom: -3 }}
-            color={focused ? Colors.tabIconSelected : Colors.tabIconDefault}
+            color={'#f4ec02'}
           />
         );
       },

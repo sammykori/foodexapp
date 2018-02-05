@@ -1,7 +1,7 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
 import { View, StyleSheet, Dimensions } from 'react-native';
-import { Container, Content, Header, Title, Body } from 'native-base';
+import { Container, Content, Header, Right, Left, Title, Body } from 'native-base';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 
 import { MonoText } from '../components/StyledText';
@@ -36,10 +36,12 @@ export default class HomeScreen extends React.Component {
   render() {
     return (
       <Container>
-        <Header>
+        <Header style = {{backgroundColor: '#f70278'}}>
+          <Left/>
           <Body>
-            <Title>Home</Title>
+            <Title>FoodExpress</Title>
           </Body>
+          <Right/>
         </Header>
         <TabViewAnimated
           style={styles.container}
@@ -59,7 +61,7 @@ export default class HomeScreen extends React.Component {
     <Ionicons name={route.icon} size={24} color="white" />
   );
 
-  _renderHeader = props => <TabBar renderIcon={this._renderIcon} {...props} />;
+  _renderHeader = props => <TabBar style = {{backgroundColor: '#f7b9d7'}} renderIcon={this._renderIcon} {...props} />;
 
   _renderScene = SceneMap({
     first: FirstRoute,
