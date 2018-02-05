@@ -10,21 +10,8 @@ export default class SearchScreen extends Component {
       <Container style={styles.wrapper}>
         <Content>
           <CategoryScreen></CategoryScreen>
-        <Item
-        style = {{height:50, backgroundColor: '#f7eff5'}}
-        searchBar
-        rounded
-        >
-          <Item>
-            <Icon name="ios-search"/>
-            <Input
-              placeholder = "What are you craving?"
-              onChangeText = {this.props.onChangeText}
-              returnKeyType = 'search'
-              onSubmitEditing ={this.props.menuSearch}
-            />
-          </Item>
-        </Item> 
+        <View style={{ paddingHorizontal: 5}}>
+
         <Card>
             <CardItem>
               <Left>
@@ -63,6 +50,8 @@ export default class SearchScreen extends Component {
               <Image source={require('../assets/images/food.jpg')} style={{height: 200, width: null, flex: 1}}/>
             </CardItem>
           </Card>
+        </View>
+          
         </Content>
       </Container>
     )
@@ -75,6 +64,5 @@ export default class SearchScreen extends Component {
 
 const styles = {
   wrapper: {
-    backgroundColor: '#ffffff'
   }
 }

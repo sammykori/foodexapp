@@ -1,6 +1,6 @@
 import React from 'react';
 import { Ionicons } from '@expo/vector-icons';
-import { View, StyleSheet, Dimensions } from 'react-native';
+import { View, StyleSheet, TextInput } from 'react-native';
 import { Container, Content, Header, Right, Left, Title, Body } from 'native-base';
 import { TabViewAnimated, TabBar, SceneMap } from 'react-native-tab-view';
 // import Category from 'react-native-category'
@@ -20,11 +20,9 @@ export default class HomeScreen extends React.Component {
     return (
       <Container>
         <Header style = {{backgroundColor: '#f70278'}}>
-          <Left/>
           <Body>
-            <Title>FoodExpress</Title>
+            <TextInput placeholder="What do you want today?" style={{backgroundColor: 'white', padding: 10, borderWidth: 1, borderRadius: 5, borderColor: 'black'}}/>
           </Body>
-          <Right/>
         </Header>
         <SearchScreen {...this.props} />
       </Container>
