@@ -1,17 +1,31 @@
 import React from 'react';
 import { ScrollView, StyleSheet } from 'react-native';
 import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
+import { observer } from 'mobx-react';
+import store from '../store'
 
+@observer
 export default class FavoritesScreen extends React.Component {
   static navigationOptions = {
-    title: 'Favorites',
+    header: null,
   };
 
+  componentDidFocus () {
+    console.log('somethings')
+  }
+
+  componentWillUpdate () {
+    console.log('update')
+  }
+
+
   render() {
+    console.log('her')
     return (
       <Container>
         <Content>
-          <List>
+          <Text>FavoritesScreen</Text>
+          {/* <List>
             <ListItem avatar>
               <Left>
                 <Thumbnail source={require('../assets/images/food.jpg')} />
@@ -38,7 +52,7 @@ export default class FavoritesScreen extends React.Component {
                 <Text note>unavailable</Text>
               </Right>
             </ListItem>
-          </List>
+          </List> */}
         </Content>
       </Container>
     );

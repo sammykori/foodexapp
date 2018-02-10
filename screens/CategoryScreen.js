@@ -17,7 +17,7 @@ const CategoryItem = (props) => {
 export default class CategoryScreen extends Component {
   render() {
     return (
-      <View style={{flex: 1, height: 100}}>
+      <View style={{flex: 1, height: 105}}>
         <ScrollView horizontal contentContainerStyle={styles.wrapper}>
           {
             this.categories.map((v, i) => (
@@ -35,10 +35,35 @@ export default class CategoryScreen extends Component {
     this.categories = [
       {
         id: 1,
-        image: 'http://individual.icons-land.com/IconsPreview/3D-Food/PNG/256x256/Seafood_Shrimp.png',
-        label: 'Sea Food',
-        bg: 'yellow'
-      }
+        image: 'https://www.insightly.com/wp-content/uploads/2016/09/Food-Service.jpg',
+        label: 'Fast Food',
+        bg: 'white'
+      },
+      {
+        id: 2,
+        image: 'http://www.snackblackstar.be/media/images/upload/menu/11.png',
+        label: 'Local Food',
+        bg: 'white'
+      },
+      {
+        id: 3,
+        image: 'http://naturegourmet.eu/files/products/food_currywurst.png',
+        label: 'Restaurant Food',
+        bg: 'white'
+      },
+      {
+        id: 4,
+        image: 'https://www.emergenc.com/sites/default/files/berry-berry-bad-smoothie.png',
+        label: 'Smoothies',
+        bg: 'white'
+      },
+      {
+        id: 5,
+        image: 'http://www.dfcchicken.com/wp-content/uploads/2016/04/Chicken-Fillet-burger.png',
+        label: 'Pizzas & Burgers',
+        bg: 'white'
+      },
+
     ]
   }
 }
