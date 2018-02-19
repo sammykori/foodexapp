@@ -5,6 +5,7 @@ import { StackNavigator } from 'react-navigation';
 import MainTabNavigator from './MainTabNavigator';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 import OrderScreen from '../screens/OrderScreen';
+import PaymentScreen from '../screens/PaymentScreen';
 
 const RootStackNavigator = StackNavigator(
   {
@@ -13,6 +14,9 @@ const RootStackNavigator = StackNavigator(
     },
     Order: {
       screen: OrderScreen
+    },
+    Payment: {
+      screen: PaymentScreen
     }
   },
   {

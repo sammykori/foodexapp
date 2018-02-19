@@ -12,7 +12,14 @@ const SearchItem = (props) => {
       <Left style={{flex: 2}}>
         <Body>
           <Text>{props.data.menu}</Text>
-          <Text note><Icon active ios='ios-pizza' android="md-pizza" style={{fontSize: 15, color: 'red'}} />{props.data.location} <Text note style={{color: 'red'}}>{props.data.price}</Text></Text>
+          <Text note style={{color: 'red'}}>
+            {props.data.price}
+            <Text>   </Text>
+            {/* <Icon active ios='ios-pizza' android="md-pizza" style={{fontSize: 15, color: 'red'}} /> */}
+            <Text note>
+            {props.data.location} 
+            </Text>
+          </Text>
         </Body>
       </Left>
       <Right>
@@ -64,7 +71,9 @@ export default class SearchScreen extends Component {
         image: 'http://travel.home.sndimg.com/content/dam/images/travel/fullset/2014/07/20/32/food-paradise-102-ss-001.rend.hgtvcom.966.544.suffix/1491584380240.jpeg',
         menu: 'Rubbish Burger',
         location: 'Chix n Ribs',
-        price: 'GHS 78'
+        price: 'GHS 78',
+        description: 'Ham, cheese, chicken, tomato, pork, egg, sausage, everything. Have fun',
+        vimage: 'https://www.thonhotels.com/siteassets/hoteller/belgia/brussel/thon-hotel-bristol-stephanie/mat-og-drikke/thon-hotel-bristol-stephanie-91-restaurant-2.jpg'
 
       },
       {
@@ -72,7 +81,9 @@ export default class SearchScreen extends Component {
         image: 'http://travel.home.sndimg.com/content/dam/images/travel/fullset/2014/07/20/32/food-paradise-102-ss-001.rend.hgtvcom.966.544.suffix/1491584380240.jpeg',
         menu: 'Rubbish Burger',
         location: 'Koffee Lounge',
-        price: 'GHS 91'
+        price: 'GHS 91',
+        description: 'Ham, cheese, chicken, tomato, pork, egg, sausage, everything. Have fun',
+        vimage: 'https://www.thonhotels.com/siteassets/hoteller/belgia/brussel/thon-hotel-bristol-stephanie/mat-og-drikke/thon-hotel-bristol-stephanie-91-restaurant-2.jpg'
 
       }
     ]

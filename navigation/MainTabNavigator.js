@@ -45,7 +45,7 @@ export default TabNavigator(
             name={iconName}
             size={28}
             style={{ marginBottom: -3 }}
-            color={'#f4ec02'}
+            color={'#f44248'}
           />
         );
       },
