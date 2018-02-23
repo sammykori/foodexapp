@@ -8,10 +8,11 @@ export default class PaymentScreen extends Component {
   static navigationOptions = {
     header: null
   }
+  
   onPressEvent() {
     Alert.alert(
-      params.data.menu,
-      params.data.price,
+      'Food',
+      'Price',
       [
         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
         {text: 'Buy', onPress: () => console.log('OK Pressed')},
@@ -34,7 +35,7 @@ export default class PaymentScreen extends Component {
             </TouchableOpacity>
           </Left>
           <Body>
-            <Title>{params.data.menu}</Title>
+            <Title>Payment Page</Title>
           </Body>
         </Header>
         <Content>
