@@ -5,11 +5,23 @@ import {Container, Content, ActionSheet, Card, CardItem, Left, Icon, Body, Title
 import { MonoText } from '../components/StyledText';
 
 export default class OrderScreen extends Component {
-
+state={
+  toggle:false
+}
   static navigationOptions = {
     header: null
   }
-  render() {
+
+_onPress(){
+  const newState = !this.state.toggle;
+  this.setState({toggle:newState})
+}
+
+  render(){
+    const {toggle} = this.state;
+    const textValue = toggle?"DELIVERY":"PICKUP";
+    const bttnBG = toggle?"dodgerblue":"white";
+    const textC = toggle?"white":"dodgerblue";
     const { goBack } = this.props.navigation;
     const { params } = this.props.navigation.state;
     const {navigate} = this.props.navigation;
@@ -106,9 +118,14 @@ export default class OrderScreen extends Component {
             </Card>
 
             <View style= {{height: 50}}/>
-              <Button onPress={() => this.props.navigation.navigate("Payment", {data: params.data})} full warning>
-              <Text>ORDER</Text>
-              </Button>
+            <View style = {{flexDirection: 'row'}}>
+              <TouchableOpacity onPress = {()=> this._onPress()} style = {{margin: 10, flex: 1, height: 60, backgroundColor: bttnBG}}>
+                <Text style = {{color: textC, fontSize: 16, textAlign: 'center'}}>{textValue}</Text>
+              </TouchableOpacity>
+            </View>
+            <Button onPress={() => this.props.navigation.navigate("Payment", {data: params.data})} full warning>
+            <Text>ORDER</Text>
+            </Button>
               {/* <Button onPress={() => ActionSheet.show(
                   {
                     options: BUTTONS,

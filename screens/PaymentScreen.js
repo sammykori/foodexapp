@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, ScrollView, Alert, Image, View, ImageBackground, Text } from 'react-native'
-import {Container, Thumbnail, Content,  Card, CardItem, Left, Icon, Body, Title, Header, Button} from 'native-base'
+import {Container, Thumbnail, Content,  Card, CardItem, Left, Icon, Body, Title, Right, Header, Button} from 'native-base'
 
 import { MonoText } from '../components/StyledText';
 
@@ -10,8 +10,8 @@ export default class PaymentScreen extends Component {
   }
   onPressEvent() {
     Alert.alert(
-      'Food',
-      'Price',
+      params.data.menu,
+      params.data.price,
       [
         {text: 'Cancel', onPress: () => console.log('Cancel Pressed'), style: 'cancel'},
         {text: 'Buy', onPress: () => console.log('OK Pressed')},
@@ -38,7 +38,20 @@ export default class PaymentScreen extends Component {
           </Body>
         </Header>
         <Content>
-         
+            <Card>
+              <CardItem>
+                <Text>{params.data.menu}</Text>
+                <Right>
+                  <Text style ={{color: "blue"}}>{params.data.price}</Text>
+                </Right>
+              </CardItem>
+            </Card>
+            <Card>
+              <CardItem>
+                <Text>{params.data.location}</Text>
+              </CardItem>
+            </Card>
+            <Text style = {{color: "red", fontSize: 20, textAlign:"center", padding: 5}}> How would you like to pay for your food?</Text>
           <View style={{flex: 1, height: 160, flex: 1, flexDirection: 'row', justifyContent: 'space-between'}} >
             <ScrollView horizontal contentContainerStyle={styles.wrapper}>
               <TouchableOpacity onPress = {this.onPressEvent} style={styles.categoryStyle} activeOpacity={0.7}>
