@@ -1,61 +1,28 @@
 import React from 'react';
-import { ScrollView, StyleSheet } from 'react-native';
+import { ScrollView, StyleSheet, ActivityIndicator } from 'react-native';
 import { Container, Header, Content, List, ListItem, Left, Body, Right, Thumbnail, Text } from 'native-base';
-import { observer } from 'mobx-react';
 import store from '../store'
 
-@observer
 export default class FavoritesScreen extends React.Component {
   static navigationOptions = {
-    header: null,
+    title: 'Favorites',
   };
 
-  componentDidFocus () {
-    console.log('somethings')
-  }
+  state = { loaded: false, favorites: [] };
 
-  componentWillUpdate () {
-    console.log('update')
+  constructor(...args) {
+    super(...args);
+    this.props.navigation.addListener('didFocus', () => {
+      this.setState({ loaded: true, favorites: store.favorites });
+    });
   }
-
 
   render() {
-    console.log('her')
-    return (
-      <Container>
-        <Content>
-          <Text>FavoritesScreen</Text>
-          {/* <List>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={require('../assets/images/food.jpg')} />
-              </Left>
-              <Body>
-                <Text>Beef Jollof</Text>
-                <Text note>Koffee Lounge</Text>
-              </Body>
-              <Right>
-                <Text note>available</Text>
-              </Right>
-            </ListItem>
-          </List>
-          <List>
-            <ListItem avatar>
-              <Left>
-                <Thumbnail source={require('../assets/images/food.jpg')} />
-              </Left>
-              <Body>
-                <Text>Egg Jollof</Text>
-                <Text note>Koffee Lounge</Text>
-              </Body>
-              <Right>
-                <Text note>unavailable</Text>
-              </Right>
-            </ListItem>
-          </List> */}
-        </Content>
-      </Container>
-    );
+    return this.state.loaded
+      ? <ScrollView style={styles.slowScreen}>
+          {this.state.favorites.map((item, i) => <Text key={i}>{item.menu}</Text>)}
+        </ScrollView>
+      : <ActivityIndicator size={'large'} style={{ padding: 16 }} />;
   }
 }
 
