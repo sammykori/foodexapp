@@ -1,16 +1,41 @@
 import { Notifications } from 'expo';
 import React from 'react';
-import { StackNavigator } from 'react-navigation';
+import { StackNavigator, DrawerNavigator } from 'react-navigation';
 
 import MainTabNavigator from './MainTabNavigator';
 import registerForPushNotificationsAsync from '../api/registerForPushNotificationsAsync';
 import OrderScreen from '../screens/OrderScreen';
 import PaymentScreen from '../screens/PaymentScreen';
+import SideBar from '../screens/sidebar';
+import NHListAvatar from '../screens/list/list-avatar';
+
+
+
+const Drawer = DrawerNavigator(
+  {
+    NHListAvatar: { 
+      screen: NHListAvatar 
+    },
+    MainTabNavigator: {
+      screen: MainTabNavigator,
+    },
+   
+   
+  },
+  {
+    initialRouteName: "MainTabNavigator",
+    contentOptions: {
+      activeTintColor: "#e91e63"
+    },
+    contentComponent: props => <SideBar {...props} />
+  }
+);
+
 
 const RootStackNavigator = StackNavigator(
   {
-    Main: {
-      screen: MainTabNavigator,
+    Drawer: {
+      screen: Drawer
     },
     Order: {
       screen: OrderScreen
@@ -20,12 +45,16 @@ const RootStackNavigator = StackNavigator(
     }
   },
   {
-    navigationOptions: () => ({
-      headerTitleStyle: {
-        fontWeight: 'normal',
-      },
-    }),
-  }
+    initialRouteName: "Drawer",
+    headerMode: "none"
+  },
+  // {
+  //   navigationOptions: () => ({
+  //     headerTitleStyle: {
+  //       fontWeight: 'normal',
+  //     },
+  //   }),
+  // }
 );
 
 export default class RootNavigator extends React.Component {

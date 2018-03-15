@@ -2,25 +2,44 @@ import React, { Component } from 'react'
 import { ScrollView, Text, View, TouchableOpacity } from 'react-native'
 import { Thumbnail } from 'native-base'
 import { Ionicons } from '@expo/vector-icons';
+import { Devless } from "../utils/devless";
 
 const CategoryItem = (props) => {
   return (
     <TouchableOpacity style={styles.categoryStyle} activeOpacity={0.7}>
-      <View style={[styles.categoryImg, {backgroundColor: props.data.bg}]}>
+      <View style={[styles.categoryImg, {backgroundColor:"white"}]}>
         <Thumbnail source={{uri: props.data.image}} />
       </View>
-      <Text style={{marginTop: 5}}>{props.data.label}</Text>
+      <Text style={{marginTop: 5}}>{props.data.name}</Text>
     </TouchableOpacity>
   )
 }
 
 export default class CategoryScreen extends Component {
+  state = {
+    categories: []
+  }
+
+  componentWillMount () {
+    this._fetchCategories()
+  }
+
+  async _fetchCategories () {
+    const res = await Devless.queryData('Menu', 'categories')
+    if (res.status_code === 625) {
+
+      this.setState({
+        categories: res.payload.results
+      })
+      console.log(this.state.categories)
+    }
+  }
   render() {
     return (
       <View style={{flex: 1, height: 105}}>
         <ScrollView horizontal contentContainerStyle={styles.wrapper}>
           {
-            this.categories.map((v, i) => (
+            this.state.categories.map((v, i) => (
               <CategoryItem data={v} key={i}/>
             ))
           }

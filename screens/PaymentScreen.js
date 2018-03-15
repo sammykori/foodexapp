@@ -41,7 +41,7 @@ export default class PaymentScreen extends Component {
         <Content>
             <Card>
               <CardItem>
-                <Text>{params.data.menu}</Text>
+                <Text>{params.data.name}</Text>
                 <Right>
                   <Text style ={{color: "blue"}}>{params.data.price}</Text>
                 </Right>
@@ -53,7 +53,7 @@ export default class PaymentScreen extends Component {
               </CardItem>
             </Card>
             <Text style = {{color: "red", fontSize: 20, textAlign:"center", padding: 5}}> How would you like to pay for your food?</Text>
-          <View style={{flex: 1, height: 160, flex: 1, flexDirection: 'row', justifyContent: 'space-between'}} >
+          <View style={{flex: 1, height: 160, flex: 1, flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between'}} >
             <ScrollView horizontal contentContainerStyle={styles.wrapper}>
               <TouchableOpacity onPress = {this.onPressEvent} style={styles.categoryStyle} activeOpacity={0.7}>
                 <View style={[styles.categoryImg, {backgroundColor: "white"}]}>
