@@ -23,7 +23,29 @@ export default class HomeScreen extends React.Component {
 
       
         <Container>
-          <Header  style = {{backgroundColor: '#f70278', height: 40}}
+           <Header 
+            style={{ backgroundColor: "#dc4239" }}
+            androidStatusBarColor="#dc2015"
+            iosBarStyle="light-content"
+          >
+            <Left>
+            <Button 
+              transparent
+              onPress={() => this.props.navigation.navigate("DrawerOpen")}
+            >
+              <Icon name="menu" />
+            </Button>
+            </Left>
+            <Body >
+              
+              <Item searchBar style = {{backgroundColor: 'white', height: 35, borderRadius: 20, padding: 2}}>
+                <Icon name="ios-search" />
+                  <Input placeholder="What are you craving?" style = {{width: 150}}/>
+              </Item>
+              
+            </Body>
+          </Header>
+          {/* <Header  style = {{backgroundColor: '#f70278', height: 40}}
            androidStatusBarColor="#dc2015"
            iosBarStyle="light-content"
            >
@@ -42,7 +64,7 @@ export default class HomeScreen extends React.Component {
             </Right>
             <Button transparent>
           </Button>
-          </Header>
+          </Header> */}
           <SearchScreen {...this.props} />
         </Container>
         

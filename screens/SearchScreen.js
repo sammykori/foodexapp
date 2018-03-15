@@ -52,19 +52,24 @@ export default class SearchScreen extends Component {
   }
 
   componentWillMount () {
-    this._fetchFoods()
+    // this._fetchFoods()
+  }
+
+  _callbackParent () {
+    alert('coming from parent')
+    console.log("working")
   }
 
   async _fetchFoods () {
     const res = await Devless.queryData('Menu', 'food', {"related":"*"})
-    console.log(res.payload[0][0].vendors[0].name)
+    console.log(res.payload)
     if (res.status_code == 625) {
       this.state.foods = res.payload[0]
       this.setState({
         foods: res.payload[0]
 
       })
-      // console.log("foods", this.state.foods[0].related.categories[0].name);
+      
     }
   }
   render() {
@@ -72,7 +77,7 @@ export default class SearchScreen extends Component {
     return (
       <Container style={styles.wrapper}>
         <Content>
-          <CategoryScreen></CategoryScreen>
+          <CategoryScreen call={this._callbackParent}></CategoryScreen>
         <View style={{ paddingHorizontal: 5}}>
           {
             (this.state.foods.length === 0)? <ActivityIndicator/> 
@@ -89,30 +94,7 @@ export default class SearchScreen extends Component {
   }
   constructor(props) {
     super(props) 
-    // console.log(props)
-
-    // this.menus =[
-      // {
-      //   id: 1,
-      //   image: 'http://travel.home.sndimg.com/content/dam/images/travel/fullset/2014/07/20/32/food-paradise-102-ss-001.rend.hgtvcom.966.544.suffix/1491584380240.jpeg',
-      //   menu: 'Rubbish Burger',
-      //   location: 'Chix n Ribs',
-      //   price: 'GHS 78',
-      //   description: 'Ham, cheese, chicken, tomato, pork, egg, sausage, everything. Have fun',
-      //   vimage: 'https://www.thonhotels.com/siteassets/hoteller/belgia/brussel/thon-hotel-bristol-stephanie/mat-og-drikke/thon-hotel-bristol-stephanie-91-restaurant-2.jpg'
-
-      // },
-    //   {
-    //     id: 2,
-    //     image: 'http://travel.home.sndimg.com/content/dam/images/travel/fullset/2014/07/20/32/food-paradise-102-ss-001.rend.hgtvcom.966.544.suffix/1491584380240.jpeg',
-    //     menu: 'Rubbish Burger',
-    //     location: 'Koffee Lounge',
-    //     price: 'GHS 91',
-    //     description: 'Ham, cheese, chicken, tomato, pork, egg, sausage, everything. Have fun',
-    //     vimage: 'https://www.thonhotels.com/siteassets/hoteller/belgia/brussel/thon-hotel-bristol-stephanie/mat-og-drikke/thon-hotel-bristol-stephanie-91-restaurant-2.jpg'
-
-    //   }
-    // ]
+   
   }
 }
 
