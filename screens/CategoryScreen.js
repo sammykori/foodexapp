@@ -34,8 +34,9 @@ export default class CategoryScreen extends Component {
       console.log(this.state.categories)
     }
   }
-  click = ()=>{
-    this.props.call();
+  click = (id) =>{
+    this.props.call(id);
+
   }
   render() {
     return (
@@ -43,7 +44,7 @@ export default class CategoryScreen extends Component {
         <ScrollView horizontal contentContainerStyle={styles.wrapper}>
           {
             this.state.categories.map((v, i) => (
-              <TouchableOpacity onPress={this.click} style={styles.categoryStyle} activeOpacity={0.7} key={i}>
+              <TouchableOpacity onPress={() => this.click(v.id)} style={styles.categoryStyle} activeOpacity={0.7} key={i}>
                 <View style={[styles.categoryImg, {backgroundColor:"white"}]}>
                   <Thumbnail source={{uri: v.image}} />
                 </View>

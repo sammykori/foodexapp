@@ -9,17 +9,28 @@ import {
   Text,
   Button
 } from "native-base";
-import { View } from 'react-native';
+import { View, AsyncStorage } from 'react-native';
 import Spacer from "../components/Spacer";
+import store from '../store'
+import { Devless } from "../utils/devless";
 
 export default class LoginScreen extends React.Component {
-  state = {
-    email: '',
-    password: ''
+  constructor(props) {
+    super(props)
+    this.state = {
+      email: '',
+      password: ''
+    }
+
+    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
-  handleSubmit () {
-    console.log('submitting')
+  async handleSubmit () {
+    const res = await Devless.call('devless', 'login', ['', this.state.email, '', this.state.password])
+    if(res.status_code === 637 && res.payload.result) {
+      AsyncStorage.setItem('userToken', res.payload.result.token)
+      store.changeAuthenticated()
+    }
   }
   render() {
     const {navigate} = this.props.navigation

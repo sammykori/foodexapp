@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Image, TouchableOpacity, ActivityIndicator } from 'react-native';
+import { Image, TouchableOpacity, ActivityIndicator, AsyncStorage } from 'react-native';
 import { Container, Header, Content, Card, CardItem, Thumbnail, Text, Button, Icon, Input, View, Item, Left, Body, Right } from 'native-base';
 import CategoryScreen from './CategoryScreen'
 import store from '../store'
@@ -52,24 +52,34 @@ export default class SearchScreen extends Component {
   }
 
   componentWillMount () {
-    // this._fetchFoods()
+    this._fetchFoods()
   }
 
-  _callbackParent () {
-    alert('coming from parent')
-    console.log("working")
+  async _callbackParent (cid) {
+    const res = await Devless.queryData('Menu', 'mobile_food', {
+      where: `Menu_categories_id, ${cid}`,
+      related: '*'
+    })
+    console.log(res)
+    if(res.status_code == 625){
+     this.state.categories = res.payload.results
+      this.setState({
+        foods: res.payload.results
+      })
+    }
+
   }
 
   async _fetchFoods () {
-    const res = await Devless.queryData('Menu', 'food', {"related":"*"})
-    console.log(res.payload)
-    if (res.status_code == 625) {
-      this.state.foods = res.payload[0]
+    const userToken = await AsyncStorage.getItem('userToken')
+    Devless.setToken(userToken)
+    const res = await Devless.queryData('Menu', 'mobile_food', {"related":"*"})
+    console.log(res)
+    if (res.status_code == 1000) {
       this.setState({
-        foods: res.payload[0]
-
+        foods: res
       })
-      
+      console.log(this.state.foods)
     }
   }
   render() {

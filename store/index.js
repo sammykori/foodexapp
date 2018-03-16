@@ -1,7 +1,7 @@
 import {observable, action, computed} from 'mobx'
 
 class Store {
-    @observable authenticated = true
+    @observable authenticated = false
     @observable favorites = []
 
     @action changeAuthenticated () {
