@@ -30,7 +30,7 @@ const SearchItem = (props) => {
             <Text>   </Text>
             {/* <Icon active ios='ios-pizza' android="md-pizza" style={{fontSize: 15, color: 'red'}} /> */}
             <Text note>
-            {props.data.vendors[0].name} 
+            {props.data.vendor[0] && props.data.vendors[0].username} 
             </Text>
           </Text>
         </Body>
